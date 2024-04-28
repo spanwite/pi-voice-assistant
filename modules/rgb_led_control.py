@@ -7,13 +7,13 @@ def switch_light(color: str, func):
     speak_text(f'Включаю {color} свет')
     func()
 
-def turn_off(self):
+def turn_off():
     speak_text('Выключаю свет')
-    self.rgb_led.turn_off()
+    rgb_led.turn_off()
 
-def show_colors(self):
+def show_colors():
     speak_text('Включаю разные цвета')
-    self.rgb_led.show_colors()
+    rgb_led.show_colors()
 
 rgb_led_commands = {
     "включи красный свет":    lambda: switch_light('красный', rgb_led.red),
