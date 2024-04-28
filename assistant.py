@@ -7,14 +7,23 @@ import sounddevice
 all_commands = dict()
 all_commands.update(rgb_led_commands)
 
-def recognize_command(command: str):
-    best_match = max(all_commands.keys(), key=lambda x: fuzz.partial_ratio(command, x))
-    percent = fuzz.partial_ratio(command, best_match)
+assistant_name = 'ассистент'
+should_do_command = False
+
+def do_command(text: str):
+    global should_do_command
+    best_match = max(all_commands.keys(), key=lambda x: fuzz.ratio(text, x))
+    percent = fuzz.ratio(text, best_match)
 
     if percent > 70:
         all_commands[best_match]()
+        should_do_command = True
+    elif percent >= 50:
+        should_do_command = True
+    else:
+        should_do_command = False
 
-    print(best_match, fuzz.partial_ratio(command, best_match))
+    print(best_match, percent)
 
 speak_text('Ассистент запущен и готов выполнять ваши команды')
 
@@ -25,9 +34,14 @@ while True:
         print(f'Ошибка: "{error}"')
         continue
 
-    if not text:
-        print('Пустой текст')
-
     print(f'Распознано: "{text}"')
 
-    recognize_command(text.lower())
+    if assistant_name in text:
+        should_do_command = True
+        speak_text('Я слушаю вашу команду')
+        continue
+
+    if not should_do_command:
+        continue
+
+    do_command(text.lower())

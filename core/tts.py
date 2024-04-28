@@ -10,5 +10,5 @@ def speak_text(text, lang='ru'):
     audio_file = 'output.mp3'
 
     tts.save(audio_file)
-    os.system(f'mpg123 {audio_file}')
+    os.system(f'mpg123 {audio_file} 2>/dev/null')
     os.remove(audio_file)
