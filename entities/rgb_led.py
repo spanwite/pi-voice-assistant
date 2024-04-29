@@ -9,7 +9,7 @@ class RgbLed:
     def __init__(self, red_pin: int, green_pin: int, blue_pin: int):
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BCM)
-
+        
         GPIO.setup(red_pin, GPIO.OUT)
         GPIO.setup(green_pin, GPIO.OUT)
         GPIO.setup(blue_pin, GPIO.OUT)

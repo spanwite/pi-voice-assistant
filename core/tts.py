@@ -10,9 +10,6 @@ def play_audio(file):
     elif system == 'Linux':
         os.system(f'mpg123 {file} 2>/dev/null')
 
-    print(system)
-
-
 def speak_text(text, lang='ru'):
     tts = gTTS(text=text, lang=lang)
 

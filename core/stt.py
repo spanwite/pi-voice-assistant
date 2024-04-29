@@ -6,7 +6,6 @@ def recognize_speech() -> tuple[str, str]:
     text, error = '', ''
 
     with sr.Microphone(sample_rate=18000) as source:
-        r.pause_threshold = 1
         r.adjust_for_ambient_noise(source)
         audio_data = r.listen(source)
         
