@@ -15,9 +15,9 @@ def recognize_speech() -> tuple[str, str]:
     except sr.UnknownValueError:
         error = "не удалось распознать речь"
     except sr.RequestError as e:
-        error = "ошибка сервиса распознавания речи; {0}".format(e)
+        error = "не удалось отправить запрос на сервер или получить ответ"
 
-    if not text:
+    if not text and not error:
         error = "распознанный текст является пустой строкой"
 
     return (text, error)

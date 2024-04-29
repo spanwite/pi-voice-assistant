@@ -4,7 +4,7 @@ from entities.rgb_led import RgbLed
 rgb_led = RgbLed(27, 22, 17)
 
 def switch_light(color: str, func):
-    speak_text(f'Включаю {color} свет')
+    speak_text(f'Включаю {color} свет') 
     func()
 
 def turn_off():
@@ -17,8 +17,8 @@ def show_colors():
 
 rgb_led_commands = {
     "включи красный свет": lambda: switch_light('красный', rgb_led.red),
-    "включи желтый свет": lambda: switch_light('желтый', rgb_led.yellow),
-    "включи зеленый свет": lambda: switch_light('зеленый', rgb_led.green),
+    "включи жёлтый свет": lambda: switch_light('жёлтый', rgb_led.yellow),
+    "включи зелёный свет": lambda: switch_light('зеленый', rgb_led.green),
     "включи голубой свет": lambda: switch_light('голубой', rgb_led.light_blue),
     "включи фиолетовый свет": lambda: switch_light('фиолетовый', rgb_led.purple),
     "включи белый свет": lambda: switch_light('белый', rgb_led.white),
