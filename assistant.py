@@ -5,10 +5,6 @@ import sounddevice
 
 class VoiceAssistant:
     all_commands = dict()
-    should_do_command = True
-    
-    def __init__(self, name: str):
-        self.name = name
 
     def add_commands(self, commands: object):
         self.all_commands.update(commands)
@@ -19,11 +15,6 @@ class VoiceAssistant:
 
         if percent > 70:
             self.all_commands[best_match]()
-            self.should_do_command = True
-        elif percent > 50:
-            self.should_do_command = True
-        else:
-            self.should_do_command = False
 
         print(best_match, percent)
 
@@ -41,13 +32,5 @@ class VoiceAssistant:
                 continue
 
             print(f'Распознано: "{text}"')
-
-            if self.name in text:
-                self.should_do_command = True
-                speak_text('Я слушаю вашу команду')
-                continue
-
-            if not self.should_do_command:
-                continue
 
             self.do_command(text.lower())
