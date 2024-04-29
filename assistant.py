@@ -31,6 +31,10 @@ class VoiceAssistant:
                 print(f'Ошибка: "{error}"')
                 continue
 
+            if 'ассистент' in text:
+                speak_text('Я слушаю вашу команду')
+                continue
+
             print(f'Распознано: "{text}"')
 
             self.do_command(text.lower())
